@@ -1,0 +1,6 @@
+[submodule "libopencm3"]
+	path = libopencm3
+	url = https://github.com/karlp/libopencm3.git
+[submodule "microrl"]
+	path = microrl
+	url = git@github.com:area3001/microrl.git

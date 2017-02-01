@@ -1,0 +1,7 @@
+# see: http://linux-tips.com/t/prevent-modem-manager-to-capture-usb-serial-devices/284
+
+ATTRS{idVendor}=="1209" ATTRS{idProduct}=="a7ea", ENV{ID_MM_DEVICE_IGNORE}="1"
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{interface}=="enstropy/console", GROUP="enstropy", MODE="0666", SYMLINK+="enstropy/console"
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{interface}=="enstropy/log", GROUP="enstropy", MODE="0666", SYMLINK+="enstropy/log"
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{interface}=="enstropy/trng", GROUP="enstropy", MODE="0666", SYMLINK+="enstropy/trng"
+
