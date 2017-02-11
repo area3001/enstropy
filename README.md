@@ -2,7 +2,7 @@
 
 This firmware provides full-speed USB access to the Nucleo-L053R8's TRNG. Single buffering combined with only tx'ing one 32-bit random number at a time gives us a 900kbps TRNG data stream.
 
-We've checked the resulting TRNG stream against the [NIST](http://csrc.nist.gov/groups/ST/toolkit/rng/index.html) and [Dieharder](https://www.phy.duke.edu/~rgb/General/dieharder.php) RNG statistical test suites. Contrary to ST's own test results mentioned in AN4230, the STM32L053's TNRG failed both tests on our setup, see the output below. We have not pinpointed the root cause of this issue yet. We welcome any review of our code base, especially the RNG init code, as well as re-running the statistical test suites.
+We've checked the resulting TRNG stream against the [NIST](http://csrc.nist.gov/groups/ST/toolkit/rng/index.html) and [Dieharder](https://www.phy.duke.edu/~rgb/General/dieharder.php) RNG statistical test suites. Contrary to ST's own test results mentioned in [AN4230](http://www.st.com/resource/en/application_note/dm00073853.pdf), the STM32L053's TNRG failed both tests on our setup, see the output below. We have not pinpointed the root cause of this issue yet. We welcome any review of our code base, especially the RNG init code, as well as re-running the statistical test suites.
 
 ```
 ~/dev/nist/sts-2.1.2 $ ./assess 800000
