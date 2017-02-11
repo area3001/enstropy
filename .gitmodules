@@ -3,4 +3,4 @@
 	url = https://github.com/karlp/libopencm3.git
 [submodule "microrl"]
 	path = microrl
-	url = git@github.com:area3001/microrl.git
+	url = https://github.com/area3001/microrl.git
