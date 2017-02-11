@@ -2,12 +2,9 @@
 
 This firmware provides full-speed USB access to the Nucleo-L053R8's TRNG. Single buffering combined with only tx'ing one 32-bit random number at a time gives us a 900kbps TRNG data stream.
 
-We've checked the resulting TRNG stream against the NIST [1] and Dieharder [2] RNG statistical test suites. Contrary to ST's own test results mentioned in AN4230, the STM32L053's TNRG failed both tests on our setup, see the output below. We have not pinpointed the root cause of this issue yet. We welcome any review of our code base, especially the RNG init code, as well as re-running the statistical test suites.
+We've checked the resulting TRNG stream against the [NIST](http://csrc.nist.gov/groups/ST/toolkit/rng/index.html) and [Dieharder](https://www.phy.duke.edu/~rgb/General/dieharder.php) RNG statistical test suites. Contrary to ST's own test results mentioned in AN4230, the STM32L053's TNRG failed both tests on our setup, see the output below. We have not pinpointed the root cause of this issue yet. We welcome any review of our code base, especially the RNG init code, as well as re-running the statistical test suites.
 
-[1] http://csrc.nist.gov/groups/ST/toolkit/rng/index.html
-[2] https://www.phy.duke.edu/~rgb/General/dieharder.php
-
-
+```
 ~/dev/nist/sts-2.1.2 $ ./assess 800000
 ~/dev/nist/sts-2.1.2 $ cat experiments/AlgorithmTesting/finalAnalysisReport.txt 
 ------------------------------------------------------------------------------
@@ -218,7 +215,9 @@ is approximately = 2 for a sample size = 3 binary sequences.
 For further guidelines construct a probability table using the MAPLE program
 provided in the addendum section of the documentation.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+```
 
+```
 ~$ cat /dev/enstropy/trng | dieharder -g 200 -a
 #=============================================================================#
 #            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
@@ -317,5 +316,5 @@ rgb_minimum_distance|   5|     10000|    1000|0.18631075|  PASSED
       rgb_lagged_sum|  13|   1000000|     100|0.00000000|  FAILED  
       rgb_lagged_sum|  14|   1000000|     100|0.00000000|  FAILED  
       rgb_lagged_sum|  15|   1000000|     100|0.00000000|  FAILED  
-
+```
 
